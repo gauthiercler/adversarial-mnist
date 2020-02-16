@@ -25,20 +25,20 @@ def evaluate(model, loader, epsilon):
         outputs = model(X)
 
         _, predicted = torch.max(outputs.data, 1)
-        loss = criterion(outputs, y)
-        model.zero_grad()
+        if predicted == y:
+            loss = criterion(outputs, y)
+            model.zero_grad()
 
-        loss.backward()
+            loss.backward()
 
-        data_grad = X.grad.data
+            data_grad = X.grad.data
+            attack_image = fgsm(X, data_grad, e=epsilon)
 
-        attack_image = fgsm(X, data_grad, e=epsilon)
+            outputs = model(attack_image)
+            _, predicted_ = torch.max(outputs.data, 1)
 
-        outputs = model(attack_image)
-        _, predicted_ = torch.max(outputs.data, 1)
-
-        if predicted == predicted_:
-            correct += 1
+            if predicted == predicted_:
+                correct += 1
     print(correct / len(loader))
 
 

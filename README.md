@@ -43,11 +43,13 @@ By using the gradient of the cost function, it can increase model error and trie
   <img src="https://latex.codecogs.com/gif.latex?%5Clarge%20%5Cboldsymbol%7BX%7D%5E%7Ba%20d%20v%7D%3D%5Cboldsymbol%7BX%7D&plus;%5Cepsilon%20%5Coperatorname%7Bsign%7D%5Cleft%28%5Cnabla_%7BX%7D%20J%5Cleft%28%5Cboldsymbol%7BX%7D%2C%20y_%7Bt%20r%20u%20e%7D%5Cright%29%5Cright%29" />
 </p>
 
-From https://arxiv.org/abs/1412.6572
+Targeted FGSM (or TFGSM) is similar to FGSM but in this case, pertubartion is computed in the direction of the negative gradient with respect to a defined target.
 
 <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?%5Clarge%20%5Cboldsymbol%7BX%7D%5E%7Ba%20d%20v%7D%3D%5Cboldsymbol%7BX%7D-%5Cepsilon%20%5Coperatorname%7Bsign%7D%5Cleft%28%5Cnabla_%7BX%7D%20J%5Cleft%28%5Cboldsymbol%7BX%7D%2C%20y_%7Bt%20a%20r%20g%20e%20t%7D%5Cright%29%5Cright%29"/>
 </p>
+
+From https://arxiv.org/abs/1412.6572
 
 Iterative fast gradient sign method (IFGSM):
 

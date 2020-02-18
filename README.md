@@ -29,16 +29,28 @@ optional arguments:
 
 ````
 
-Fast Gradient Sign Method (FGSM) is used  to trick and perturb model, to cause model it to make mistakes on its predictions.
+
+
+
+
+Fast Gradient Sign Method (FGSM):
+
+FGSM is used  to trick and perturb model, to cause model it to make mistakes on its predictions.
 It is used to evaluate robustness of a trained model on sightly modified data.
+By using the gradient of the cost function, it can increase model error and tries to approximate the loss function.
 
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?%5Clarge%20%7Bx%7D%20&plus;%20%5Coperatorname%7B%5Cepsilon%20sign%7D%5Cleft%28%5Cnabla_%7Bx%7D%20J%28%5Cboldsymbol%7B%5Ctheta%7D%2C%20%5Cboldsymbol%7Bx%7D%2C%20y%29%5Cright%29" />
+</p>
 
+From https://arxiv.org/abs/1412.6572
 
-Fast Gradient Sign Method:
+Iterative fast gradient sign method (IFGSM):
 
+Same with FGSM but applied on T gradient steps with alpha = epsilon / T
 
-By using the gradient of the cost function, we can increase model error
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?%5Clarge%20%5Cboldsymbol%7Bx%7D_%7B0%7D%5E%7Ba%20d%20v%7D%3D%5Cboldsymbol%7Bx%7D%2C%20%5Cquad%20%5Cboldsymbol%7Bx%7D_%7BN&plus;1%7D%5E%7Ba%20d%20v%7D%3D%5Coperatorname%7BClip%7D_%7BX%2C%20%5Cboldsymbol%7Bk%7D%7D%5Cleft%5C%7B%5Cboldsymbol%7Bx%7D_%7BN%7D%5E%7Ba%20d%20v%7D&plus;%5Calpha%20%5Coperatorname%7Bsign%7D%5Cleft%28%5Cnabla_%7BX%7D%20J%5Cleft%28%5Cboldsymbol%7Bx%7D_%7BN%7D%5E%7Ba%20d%20v%7D%2C%20y_%7Bt%20r%20u%20e%7D%5Cright%29%5Cright%29%5Cright%5C%7D"/>
+</p>
 
-It tries to approximate the loss function
-
-
+From https://arxiv.org/abs/1611.01236
